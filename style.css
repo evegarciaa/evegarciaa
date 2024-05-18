@@ -1,0 +1,39 @@
+/*
+ Esta es una hoja de estilos, aqui debemos poner reglas
+
+ Reglas que modican las cajas de html
+
+ Las clases se utilizan para dar estilo a mas de un elemento
+ */
+
+body 
+{
+background-color:white;
+ }
+
+h1
+{
+    font-size: 60px;
+}
+
+p
+{
+    font-size: 25px;
+}
+
+ol
+{
+    font-size: 20px;
+}
+
+/* SELECTOR DE CLASE */
+.productos
+{
+border: 5px solid yellow;
+
+}
+
+.colora
+{
+    color: rgb(44, 34, 178);
+}
