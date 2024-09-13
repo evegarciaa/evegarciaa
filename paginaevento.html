@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra de Boletos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffd733;
+        }
+
+        header {
+            background-color: #13a61a;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        .evento {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .evento:hover {
+            transform: scale(1.05);
+        }
+
+        .evento h3 {
+            margin: 0;
+        }
+
+        .evento p {
+            margin: 10px 0;
+        }
+
+        .evento a {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .evento a:hover {
+            background-color: #218838;
+        }
+
+        form {
+            display: none;
+            margin-top: 20px;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .loading-icon {
+            display: none;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        .confirmation {
+            display: none;
+            font-size: 18px;
+            color: #28a745;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Compra de Boletos para Eventos</h1>
+</header>
+
+<main>
+    <h2>Selecciona un Evento</h2>
+
+    <div class="evento" onclick="mostrarFormulario('Concierto de Rock')">
+        <h3>Concierto de Rock</h3>
+        <p>Fecha: 25 de septiembre de 2024</p>
+        <p>Lugar: Auditorio Nacional</p>
+        <p>Precio: $50</p>
+        <a href="#">Comprar</a>
+    </div>
+
+    <h2 id="comprar">Formulario de Compra</h2>
+    <form id="formularioCompra">
+        <label for="evento">Evento:</label>
+        <input type="text" id="evento" name="evento" readonly>
+
+        <label for="cantidad">Cantidad de boletos:</label>
+        <input type="number" id="cantidad" name="cantidad" min="1" max="10" required>
+
+        <label for="nombre">Nombre completo:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email" required>
+
+        <button type="button" onclick="iniciarCompra()">Confirmar Compra</button>
+    </form>
+
+    <div class="loading-icon" id="loadingIcon"></div>
+    <div class="confirmation" id="confirmationMessage">¡Compra realizada con éxito!</div>
+</main>
+
+<script>
+    function mostrarFormulario(evento) {
+        document.getElementById('formularioCompra').style.display = 'block';
+        document.getElementById('evento').value = evento;
+    }
+
+    function iniciarCompra() {
+        var loadingIcon = document.getElementById('loadingIcon');
+        var confirmationMessage = document.getElementById('confirmationMessage');
+        var formulario = document.getElementById('formularioCompra');
+
+        // Mostrar animación de carga
+        formulario.style.display = 'none';
+        loadingIcon.style.display = 'block';
+
+        // Simular proceso de compra
+        setTimeout(function() {
+            loadingIcon.style.display = 'none';
+            confirmationMessage.style.display = 'block';
+        }, 3000); // 3 segundos de "espera"
+    }
+</script>
+
+</body>
+</html>
